@@ -15,7 +15,7 @@ function expandPosts(callback) {
 // Function to hide posts containing any of the filterKeywords
 function hideCollabPosts() {
   const posts = document.querySelectorAll(".feed-shared-update-v2");
-
+  let hiddenCount = 0;
   posts.forEach((post) => {
     // Select the expanded text inside the post
     const expandedText = post.querySelector(
@@ -32,7 +32,12 @@ function hideCollabPosts() {
 
     if (containsKeyword) {
       post.style.display = "none";
+      hiddenCount++;
     }
+  });
+  chrome.storage.local.get("filteredCount", (data) => {
+    const previousCount = data.filteredCount || 0;
+    chrome.storage.local.set({ filteredCount: previousCount + hiddenCount });
   });
 }
 
