@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Clean LinkedIn",
+  "name": "Clean LinkedIn Feed",
   "version": "1.0",
   "description": "Hides LinkedIn posts that contain #collab, #preplacedcollab. No respect for undisclosed ads.",
   "icons": {
@@ -23,5 +23,6 @@
       "run_at": "document_end"
     }
   ],
-  "permissions": ["activeTab", "storage"]
+  "permissions": ["storage"],
+  "host_permissions": ["https://www.linkedin.com/*"]
 }
