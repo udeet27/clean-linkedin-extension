@@ -41,9 +41,12 @@ function hideCollabPosts() {
   });
 }
 
-// First expand posts, then filter them
-expandPosts(hideCollabPosts);
+if (!window.location.pathname.startsWith("/in/")) {
+  //exclude linkedin profile pages
+  // First expand posts, then filter them
+  expandPosts(hideCollabPosts);
 
-// Use MutationObserver to watch for dynamically loaded posts
-const observer = new MutationObserver(() => expandPosts(hideCollabPosts));
-observer.observe(document.body, { childList: true, subtree: true });
+  // Use MutationObserver to watch for dynamically loaded posts
+  const observer = new MutationObserver(() => expandPosts(hideCollabPosts));
+  observer.observe(document.body, { childList: true, subtree: true });
+}
