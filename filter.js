@@ -41,8 +41,9 @@ function hideCollabPosts() {
   });
 }
 
-if (!window.location.pathname.startsWith("/in/")) {
-  //exclude linkedin profile pages
+if (!window.location.pathname.startsWith("/in/") && !window.location.pathname.startsWith("/company/")) {
+  // Check if the current page is a LinkedIn profile or company page
+  // If not, proceed with filtering posts
   // First expand posts, then filter them
   expandPosts(hideCollabPosts);
 
